@@ -1,7 +1,7 @@
 const film = document.querySelector('p')
 const list = document.querySelector('ul')
 
-fetch("./db.json")
+fetch("http://localhost:3000/movies")
     .then(res => res.json())
     .then(data => {
         Object.entries(data).forEach(movies => {
