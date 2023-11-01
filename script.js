@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
           listItem.classList.add('film', 'item');
           listItem.textContent = movie.title;
           listItem.addEventListener('click', () => {
-            // When a movie is clicked, fetch its details and display them
+            // display clicked movie
             fetch(`http://localhost:3000/films/${movie.id}`)
               .then(response => response.json())
               .then(movieData => {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
   
-    // Function to display movie details
+    // display film details
     function displayMovieDetails(data) {
       const poster = data.poster;
       const title = data.title;
