@@ -18,45 +18,31 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch('http://localhost:3000/films')
       .then(response => response.json())
       .then(data => {
-        const filmsList = document.getElementById('films');
-        const placeholder = filmsList.querySelector('.placeholder');
-        if (placeholder) {
-          filmsList.removeChild(placeholder);
-        }
+        const films = document.getElementById('films');
   
         data.forEach(movie => {
-          const listItem = document.createElement('li');
-          listItem.classList.add('film', 'item');
-          listItem.textContent = movie.title;
-          listItem.addEventListener('click', () => {
+          films.insertAdjacentHTML('beforeend', `<li>${movie.title}</li>`)
+        });
+          // display clicked movie
+          films.addEventListener('click', () => {
             // display clicked movie
             fetch(`http://localhost:3000/films/${movie.id}`)
               .then(response => response.json())
               .then(movieData => {
-                displayMovieDetails(movieData);
+                filmdetails(movieData);
               });
           });
-          filmsList.appendChild(listItem);
+          films.appendChild(listItem);
         });
-      });
   
-    // display film details
-    function displayMovieDetails(data) {
-      const poster = data.poster;
-      const title = data.title;
-      const runtime = data.runtime;
-      const showtime = data.showtime;
-      const description = data.description;
-      const capacity = data.capacity;
-      const ticketsSold = data.tickets_sold;
-      const availableTickets = capacity - ticketsSold;
-  
-      document.getElementById('poster').src = poster;
-      document.getElementById('movieTitle').textContent = title;
-      document.getElementById('runtime').textContent = `Runtime: ${runtime} minutes`;
-      document.getElementById('showtime').textContent = `Showtime: ${showtime}`;
-      document.getElementById('description').textContent = `Description: ${description}`;
-      document.getElementById('availableTickets').innerHTML = `${availableTickets}`;
+    // Function to display movie details
+    function filmdetails(data) {
+      document.getElementById('title').innerHTML = data.title;
+        document.getElementById('movie-url').src = data.poster;
+        document.getElementById('runtime').textContent = `${data.runtime} minutes`;
+        document.getElementById('showtime').textContent = data.showtime;
+        document.getElementById('description').textContent = data.description;
+        document.getElementById('availableTickets').innerHTML = data.capacity-data.tickets_sold;
     }
   });
   function purchase(){
