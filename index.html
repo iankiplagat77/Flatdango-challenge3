@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Challenge 3</title>
+        <title>Films | Coding-Challenge-3</title>
         <style>
-            #outline{
+            .all{
                 display:flex;
             }
             img{
                 height: 500px;
                 width: 300px;
             }
+            .list li{
+                border-style: solid;
+
+            }
+            .all{
+                margin: 30px;
+            }
         </style>
     </head>
     <body>
-        <h1>Movies</h1>
-        
-        <div id="outline">
-            <div>
-                <ul>    
+        <div class="all">
+            <div class="list">
+                <ul id="films">
+                    <!--List of all the other movies-->>
                 </ul>
             </div>
-            <div>
-                <p><b><i>First Movie</i></b></p>
-                <button onclick="buyTickets()">Buy Tickets</button>
+            <div class="main_content">
+                <h2 id="title"></h2>
+                <img id="movie-url" src=""><br><br>
+                <span><b>Runtime: </b><span id="runtime"></span></span><br><br>
+                <span><b>ShowTime: </b> <span id="showtime"></span></span><br><br>
+                <span><b>Description: </b><span id="description"></span></span><br><br>
+                <span><b>Available Tickets: </b><span id="availableTickets"></span></span><br><br>
+                <button onclick ="purchase()" class="buyTicketButton">Buy Ticket</button>
             </div>
         </div>
-
-        <script src="script.js">
-
-        </script>
-
+        
+        
+        <script src="script.js"></script>
     </body>
 </html>
